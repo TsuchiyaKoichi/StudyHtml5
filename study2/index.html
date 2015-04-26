@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app="app" ng-strict-di>
+
+  <head>
+    <meta charset="utf-8" />
+    <!--<link rel="stylesheet" href="study1.css" />-->
+  </head>
+
+  <body>
+
+    <h3>constantで共通定義を作成</h3>
+    
+    <div>変数:{{CONSTRACT}}</div>
+    <div>変数:{{util.YEAR}}</div>
+    <div>定義:<span ng-repeat="device in util.DEVICES">[{{device.name}}]</span></div>
+    <div>関数:{{util.leftPad(32)}}</div>
+    <br />
+    <div ng-controller="myController">
+      <select ng-model="device" ng-options="device.id as device.name for device in util.DEVICES">
+        <option value="">選択してください</option>
+      </select>
+      <span ng-bind="device"></span>
+      <br />
+      <label ng-repeat="dev in util.DEVICES" for="device{{device.id}}">
+        <input type="checkbox" id="device{{dev.id}}" value="{{dev.id}}" />
+        {{dev.name}}
+      </label>
+    </div>
+    
+    <h3>変数の内容をJSONで画面表示してデバッグ</h3>
+    <div>
+      DEVICES:<br />
+      {{util.DEVICES | json}}
+    </div>
+
+    <script src="lib/angular.min.js"></script>
+    <script src="study2.js"></script>
+  </body>
+
+</html>

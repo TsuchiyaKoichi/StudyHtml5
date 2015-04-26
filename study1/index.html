@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<!-- ng-strict-diは依存性注入の厳密なチェックを行う -->
+<html ng-app="app" ng-strict-di>
+
+  <head>
+    <meta charset="utf-8" />
+    <!--<link rel="stylesheet" href="study1.css" />-->
+  </head>
+
+  <body>
+
+    <h3>エクスプレッション</h3>
+    <div ng-controller="myController1">
+      Controller1:{{msg}}
+    </div>
+    
+    <div ng-controller="myController2">
+      Controller2:{{msg}}
+    </div>
+    
+    <br />
+    
+    <h3>データバインド</h3>
+    
+    <div ng-controller="myController3">
+      <input type="text" ng-model="name" />
+      <div>こんにちは{{name}}さん</div>
+      <!-- この記述方法ならページロード時に一瞬{{}}式が見えるのを防止できる -->
+      <div ng-bind="'こんにちは' + name + 'さん'"></div>
+      <!-- この記述方法でも可。ただしこちらの場合はangular.jsを先頭でロードしておく必要がある -->
+      <div ng-cloak>{{"こんにちは" + name + "さん"}}</div>
+      <br />
+      <button ng-click="onclick()">ボタン</button>
+      <span ng-bind="ret"></span><br />
+      
+      <!-- $eventでイベント内容を渡すことができる -->
+      <button ng-click="onclick($event)">ボタン</button>
+      <span ng-bind="ret"></span>
+    </div>
+    
+    <br />
+    
+    <h3>HTMLバインド</h3>
+    
+    <div ng-controller="myController4">
+      <div style="color:blue;">[ng-bindでバインド]</div>
+      <div ng-bind="msg"></div><br/>
+      <div style="color:blue;">[sce.trustAsHtmlでバインド]</div>
+      <div ng-bind-html="trustMsg"></div><br/>
+    </div>
+    
+    <div ng-controller="myController5">
+      <div style="color:blue;">[ng-bind-htmlとngSanitizeでバインド]</div>
+      <div ng-bind-html="msg"></div>
+    </div>
+
+    <!-- ライブラリダウンロードによって、ページの描画がブロックされるのを防ぐため末尾に宣言する -->    
+    <!-- (けど、公式サンプルでもheadタグ内に記載している。) -->
+    <!-- CDNを利用することで、事前準備不要、パフォーマンスに優れるといったメリットもある -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular-cookies.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular-sanitize.min.js"></script>
+    <script src="study1.js"></script>
+  </body>
+
+</html>
