@@ -8,9 +8,20 @@
 
   <body>
 
-    <h3>constantで共通定義を作成</h3>
+    <h3>ルーティング</h3>
+    <div ng-view></div>
+    
+    
+    <script type="text/ng-template" id="main.html">
+      {{msg}}
+      <br>
+      <ul ng-repeat='page in pages'>
+        <li><a href="{{page.url}}">{{page.title}}</a></li>
+      </ul>
+    </script>
 
-    <script src="lib/angular.min.js"></script>
+    <script src="../lib/angular.min.js"></script>
+    <script src="../lib/angular-route.min.js"></script>
     <script src="study3.js"></script>
   </body>
 

@@ -1,0 +1,37 @@
+{{msg}}<br>
+name:{{name}}<br>
+<br>
+<!-- 簡単な変数の宣言はcontrollerでなくてもng-initでも可能 -->
+<div ng-init="frameworks = ['Backbone.js', 'Ember.js', 'Knockout.js']"></div>
+
+<h3>{{frameworks.length}} frameworks</h3>
+<ul ng-repeat="framework in frameworks">
+    <li>{{framework}}</li>
+</ul>
+<br>
+<!-- uppercaseを使用すれば大文字になる -->
+<h3>uppercaseフィルタを使用</h3>
+<ul ng-repeat="framework in frameworks">
+    <li>{{framework | uppercase}}</li>
+</ul>
+<br>
+<!-- filterを使用すれば絞り込みできる -->
+<h3>'a'でフィルタ</h3>
+<ul ng-repeat="framework in frameworks | filter : 'a'">
+    <li>{{framework}}</li>
+</ul>
+<br>
+<!-- inputと組み合わせて動的にフィルタリング -->
+<h3>入力でフィルタ</h3>
+<input type="text" ng-model="filterText" />
+<ul ng-repeat="framework in frameworks | filter : filterText">
+    <li>{{framework}}</li>
+</ul>
+<br>
+<!-- 自作フィルタで逆順に並び替え -->
+<h3>自作フィルタ</h3>
+<ul ng-repeat="framework in frameworks | reverse">
+    <li>{{framework}}</li>
+</ul>
+<br>
+<a href="#/">戻る</a>
