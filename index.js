@@ -20,4 +20,25 @@ angular.module('app', [])
       url: 'http://qiita.com/lga0503/items/d8efddcad2574e1938f1',
       sample: './study3'
     });
+    
+    scope.sites.push({
+      name: 'Geolocation API',
+      url: 'http://www.htmq.com/geolocation/',
+      sample: './study4'
+    });
+    
+    scope.sites.push({
+      name: '人気順に説明する初めてのHTML5開発',
+      url: 'http://www.atmarkit.co.jp/ait/subtop/features/dotnet/app/introhtml5_index.html',
+      sample: './study5'
+    });
+    
+    scope.sites.push({
+      name: 'AngularJS のデータバインドを支える $watch',
+      url: 'http://angularjsninja.com/blog/2013/12/13/angularjs-watch/',
+      sample: './study6'
+    });
+    
+    // 次のネタ
+    // AngularJS のデータバインドを支える $watch http://angularjsninja.com/blog/2013/12/13/angularjs-watch/
   }]);

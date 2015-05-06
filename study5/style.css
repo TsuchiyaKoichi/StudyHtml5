@@ -1,0 +1,112 @@
+h4{
+    margin-top: 0;
+    font-size: 14px;
+    color: #5cb85c;
+}
+
+body {
+    font: 16px/1.7 "ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro",Meiryo,"メイリオ","ＭＳ Ｐゴシック",Helvetica,Sans-Serif;
+}
+
+.section li {
+    color: #3D9970;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.section li > a {
+    color: #0000FF;
+    margin-left: 10px;
+    font-weight: normal;
+}
+
+
+.functions{
+    width: 100%;
+    max-width: 400px;
+    margin-top: 30px;
+}
+
+.functions caption {
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+}
+
+.functions th {
+    padding: 3px 5px;
+    border: 1px solid #666666;
+    background-color: #3D9970;
+    color: #FFFFFF;
+    text-align: center;
+}
+
+.functions td {
+    padding: 3px 5px;
+    border: 1px solid #666666;
+    background-color: #F0FFF0;
+}
+
+
+.storage {
+    width: 100%;
+    max-width: 400px;
+    margin-left: 10px;
+}
+
+.storage .index{
+    font-size: 20px;
+    font-weight: bold;
+    padding-left: 5px;
+    color: #3D9970;
+    border-left: 5px solid #3D9970;
+    background-color: #b3ffd9;
+}
+
+.storage fieldset {
+    border: 1px solid #999999;
+    padding: 0 5px;
+}
+
+.storage fieldset legend{
+    border: 0;
+    width: 50px;
+}
+
+.storage .items {
+    margin-top: 30px;
+}
+
+.storage .items .caption{
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+}
+
+.storage .items table{
+    width: 100%;
+    margin-top: 10px;
+}
+
+.storage .items table th {
+    padding: 3px 5px;
+    border: 1px solid #666666;
+    text-align: center;
+}
+
+.storage .items table td {
+    padding: 3px 5px;
+    border: 1px solid #666666;
+}
+
+.storage .items table td.remove{
+    width: 60px;
+    text-align: center;
+}
+
+.storage .items table td.remove a{
+    color: #d9534f;
+    cursor: pointer;
+}

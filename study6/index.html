@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html ng-app="app" ng-strict-di>
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width">
+    <script src="../lib/angular.min.js"></script>
+    <script src="../lib/angular-sanitize.min.js"></script>
+    <script src="study6.js"></script>
+    <link rel="stylesheet" href="../lib/bootstrap.min.css">
+    <style type="text/css">
+    <!--
+        .empty {
+            color: #999999;
+        }
+    -->
+    </style>
+  </head>
+
+  <body>
+
+    <h3>AngularJS のデータバインドを支える $watch</h3>
+
+    <div ng-controller="MainController">
+        <input type="text" ng-model="memo">
+        
+        <div style="margin-top: 10px;">
+            <p style="margin:0;">◆変更履歴</p>
+            <div style="height: 200px; border: 1px solid #000000; overflow-y: auto; width:400px;">
+                <div ng-repeat="history in historys | orderBy: '-seq'">
+                    <span ng-bind-html="history.oldValue + '⇒' + history.newValue"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        angular.module('app', ['ngSanitize'])
+            .controller('MainController', ['$scope', function(scope) {
+                
+                var counter = 0;
+                scope.memo = "";
+                scope.historys = [];
+                
+                scope.$watch('memo', function(newVal, oldVal) {
+                    
+                    newVal = newVal === "" ? '<span class="empty">[empty]</span>' : newVal;
+                    oldVal = oldVal === "" ? '<span class="empty">[empty]</span>' : oldVal;
+                    scope.historys.push({seq: counter, oldValue: oldVal, newValue: newVal});
+                    counter++;
+                });
+            }]);
+    </script>
+  </body>
+
+</html>

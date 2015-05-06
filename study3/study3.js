@@ -1,4 +1,39 @@
 angular.module('app', ['ngRoute'])
+    .factory('smartphonesService', ['$q', '$timeout', function($q, $timeout) {
+        
+        // サービスを作成する
+        // $qを利用してdeferができる
+        
+        var smartphones = ['iPhone', 'Android', 'WindowsPhone'];
+        
+        return function() {
+            
+            var defer = $q.defer();
+            
+            $timeout(function() {
+                defer.resolve(smartphones);
+            }, 3000);
+            
+            return defer.promise;
+        };
+    }])
+    .directive('tooltip', ['$parse', function(parse) {
+       
+       return {
+           restrict: 'A',
+           template: '<span>[template]</span><i ng-transclude></i>',
+           transclude: true,
+           link: function(scope, element, attr)  {
+
+                var value = parse(attr.tooltip)(scope);
+                $(element).tooltip({
+                    content: value
+                });
+           }
+       };
+    }]);
+
+angular.module('app')
     .config(['$routeProvider', function(rootProvider) {
         
         rootProvider
@@ -17,9 +52,9 @@ angular.module('app', ['ngRoute'])
                 redirectTo: '/'
             });
     }])
-    // filter定義は自分で作成することもできる
     .filter('reverse', function() {
-       return function(values) { return values.concat().reverse(); }; 
+        // filter定義は自分で作成することもできる
+        return function(values) { return values.concat().reverse(); }; 
     })
     .controller('MainController', ['$scope', function(scope) {
         
@@ -30,7 +65,11 @@ angular.module('app', ['ngRoute'])
             { url: '#/page3', title: 'Page3' }
         ];
     }])
-    .controller('Page1Controller', ['$scope', '$routeParams', 'reverse', function(scope, routeParams, reverse) {
+    .controller('Page1Controller', ['$scope', '$routeParams', 'smartphonesService', function(scope, routeParams, smartphonesService) {
         scope.msg = 'This is page1 template.';
         scope.name = routeParams.name;
+        //scope.smartphones = smartphonesService();
+        scope.smartphones = [];
+        smartphonesService()
+            .then(function(result) { scope.smartphones = result; });
     }]);

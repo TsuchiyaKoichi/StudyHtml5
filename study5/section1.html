@@ -1,0 +1,11 @@
+<h4>位置情報をブラウザで活用！ Geolocationを使いこなそう</h4>
+<input type="button" value="現在位置を取得" class="btn btn-success" ng-click="getPosition()">
+<div ng-show="position">
+    <ul>
+        <li>緯度：{{position.latitude}}</li>
+        <li>経度：{{position.longitude}}</li>
+        <li>精度：{{position.accuracy}}</li>
+    </ul>
+    
+    <div id="gmap" style="width: 500px; height: 500px;"></div>
+</div>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html ng-app="app" ng-strict-di>
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="style.css">
+    <!--<link rel="stylesheet" href="../lib/bootstrap.min.css">-->
+  </head>
+
+  <body>
+
+    <h3>Geolocation API</h3>
+    
+    <div ng-controller="mainController" class="main">
+        <input type="button" value="現在位置を取得する" ng-click="getCurrentPos()">
+        
+        <table ng-show="position">
+            <caption>取得時間：{{position.timestamp}}</caption>
+            <tbody>
+                <tr>
+                    <th>latitude</th>
+                    <td>{{position.coords.latitude}}</td>
+                </tr>
+                <tr>
+                    <th>longitude</th>
+                    <td>{{position.coords.longitude}}</td>
+                </tr>
+                <tr>
+                    <th>accuracy</th>
+                    <td>{{position.coords.accuracy}}</td>
+                </tr>
+                <tr>
+                    <th>altitude</th>
+                    <td>{{position.coords.altitude}}</td>
+                </tr>
+                <tr>
+                    <th>altitudeAccuracy</th>
+                    <td>{{position.coords.altitudeAccuracy}}</td>
+                </tr>
+                <tr>
+                    <th>heading</th>
+                    <td>{{position.coords.heading}}</td>
+                </tr>
+                <tr>
+                    <th>speed</th>
+                    <td>{{position.coords.speed}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <input type="button" value="現在位置を取得する(定期監視)" ng-click="watchPosition()">
+        <input type="button" value="停止" ng-click="stopPosWatch()">
+        
+        <table ng-show="position2">
+            <caption>取得時間：{{position2.timestamp}}</caption>
+            <tbody>
+                <tr>
+                    <th>latitude</th>
+                    <td>{{position2.coords.latitude}}</td>
+                </tr>
+                <tr>
+                    <th>longitude</th>
+                    <td>{{position2.coords.longitude}}</td>
+                </tr>
+                <tr>
+                    <th>accuracy</th>
+                    <td>{{position2.coords.accuracy}}</td>
+                </tr>
+                <tr>
+                    <th>altitude</th>
+                    <td>{{position2.coords.altitude}}</td>
+                </tr>
+                <tr>
+                    <th>altitudeAccuracy</th>
+                    <td>{{position2.coords.altitudeAccuracy}}</td>
+                </tr>
+                <tr>
+                    <th>heading</th>
+                    <td>{{position2.coords.heading}}</td>
+                </tr>
+                <tr>
+                    <th>speed</th>
+                    <td>{{position2.coords.speed}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script src="../lib/angular.min.js"></script>
+    <script src="../lib/jquery.min.js"></script>
+    <script src="study4.js"></script>
+  </body>
+
+</html>

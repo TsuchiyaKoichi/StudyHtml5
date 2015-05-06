@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app="app" ng-strict-di>
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width">
+    <script src="../lib/angular.min.js" defer></script>
+    <script src="../lib/angular-route.min.js" defer></script>
+    <script src="https://maps.google.com/maps/api/js?sensor=true"></script>
+    <script src="study5.js" defer></script>
+    <link rel="stylesheet" href="../lib/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+
+    <h3>人気順に説明する初めてのHTML5開発</h3>
+
+    <div ng-view></div>
+    
+    <script id="menu.html" type="text/ng-template">
+        <ol class="section">
+            <li ng-repeat="section in sections">{{section.title}}<a href="{{section.url}}">サンプル</a></li>
+        </ol>
+        
+        <table class="functions" align="center">
+            <caption>[利用中ブラウザのHTML5対応状況]</caption>
+            <thead>
+                <tr>
+                    <th>HTML5要素</th>
+                    <th>利用可否</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="function in functions">
+                    <td>{{function.name}}</td>
+                    <td>{{function.enable}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </script>
+  </body>
+
+</html>

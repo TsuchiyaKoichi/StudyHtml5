@@ -1,0 +1,98 @@
+<h4>ブラウザでストレージ？ Web Storageを使いこなそう</h4>
+
+<section class="storage" ng-controller="SessionController">
+    <div class="index">SessionStorage</div>
+    <fieldset>
+        <legend>入力</legend>
+        <form ng-submit="submit()" class="form-horizontal">
+            <div class="form-group">
+                <label for="key" class="col-sm-2 control-label">キー</label>
+                <div class="col-sm-10">
+                    <input id="key" name="key" type="text" class="form-control" ng-model="key">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="value" class="col-sm-2 control-label">値</label>
+                <div class="col-sm-10">
+                    <input id="value" name="value" type="text" class="form-control" ng-model="value">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <input type="submit" value="保存" class="btn btn-success">
+                </div>
+            </div>
+        </form>
+    </fieldset>
+    
+    <div class="items">
+        <div class="caption">SessionStorageの内容</div>
+        <input type="button" value="全て削除" class="btn btn-danger" ng-click="removeAll()"><br>
+        <table ng-if="items.length > 0">
+            <thead>
+                <tr>
+                    <th>キー</th>
+                    <th>値</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in items">
+                    <td>{{item.key}}</td>
+                    <td>{{item.value}}</td>
+                    <td class="remove"><a ng-click="remove(item.key)">削除</a></td>
+                </tr>
+            </tbody>
+        </table>
+        <span ng-if="items.length === 0">SessionStorageに保存されている値はありません</span>
+    </div>
+</section>
+<hr>
+<section class="storage" ng-controller="LocalController">
+    <div class="index">LocalStorage</div>
+    <fieldset>
+        <legend>入力</legend>
+        <form ng-submit="submit()" class="form-horizontal">
+            <div class="form-group">
+                <label for="key" class="col-sm-2 control-label">キー</label>
+                <div class="col-sm-10">
+                    <input id="key" name="key" type="text" class="form-control" ng-model="key">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="value" class="col-sm-2 control-label">値</label>
+                <div class="col-sm-10">
+                    <input id="value" name="value" type="text" class="form-control" ng-model="value">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <input type="submit" value="保存" class="btn btn-success">
+                </div>
+            </div>
+        </form>
+    </fieldset>
+    
+    <div class="items">
+        <div class="caption">LocalStorageの内容</div>
+        <input type="button" value="全て削除" class="btn btn-danger" ng-click="removeAll()"><br>
+        <div ng-if="msg" ng-bind="msg"></div>
+        <table ng-if="items.length > 0">
+            <thead>
+                <tr>
+                    <th>キー</th>
+                    <th>値</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in items">
+                    <td>{{item.key}}</td>
+                    <td>{{item.value}}</td>
+                    <td class="remove"><a ng-click="remove(item.key)">削除</a></td>
+                </tr>
+            </tbody>
+        </table>
+        <span ng-if="items.length === 0">LocalStorageに保存されている値はありません</span>
+    </div>
+</section>
