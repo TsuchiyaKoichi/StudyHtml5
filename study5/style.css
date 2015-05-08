@@ -110,3 +110,20 @@ body {
     color: #d9534f;
     cursor: pointer;
 }
+
+
+.view-area .div1
+{
+    width: 300px;
+    height: 300px;
+}
+
+.view-area span, .view-area div
+{
+    border: 1px solid #666666;
+}
+
+.view-area .highlight
+{
+    background-color: #FF1493;
+}

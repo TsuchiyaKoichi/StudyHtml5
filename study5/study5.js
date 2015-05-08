@@ -14,6 +14,10 @@ angular.module('app')
             .when('/section2', {
                 templateUrl: 'section2.html'
             })
+            .when('/section4', {
+                templateUrl: 'section4.html',
+                controller: 'Section4Controller'
+            })
             .otherwise({
                 redirectTo: '/'
             });
@@ -27,8 +31,12 @@ angular.module('app')
            url: '#/section1'
         });
         scope.sections.push({
-           title: 'ブラウザでストレージ？ Web Storageを使いこなそう ',
+           title: 'ブラウザでストレージ？ Web Storageを使いこなそう',
            url: '#/section2'
+        });
+        scope.sections.push({
+           title: 'DOM操作の主流になるか！？ セレクタAPIを使いこなそう',
+           url: '#/section4'
         });
         
         
@@ -213,4 +221,13 @@ angular.module('app')
            getItems();
            scope.$apply();
         });
+    }])
+    .controller('Section4Controller', ['$scope', function(scope) {
+        
+        scope.selector1 = 'div1';
+        
+        scope.test = function(val) {
+            console.log("." + val);
+            document.querySelector(val).classList.add(val);
+        };
     }]);
