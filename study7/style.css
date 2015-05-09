@@ -1,0 +1,43 @@
+h4 {
+	font-weight: bold;
+}
+
+section {
+	padding: 5px;
+}
+
+.subtitle {
+	margin-top: 10px;
+	font-weight: bold;
+}
+
+.minus {
+	color: red;
+}
+
+.futoji {
+	font-weight: bold;
+}
+
+.cssTest{
+	margin-top: 5px;
+	text-align: center;
+	vertical-align: middle;
+	width: 120px;
+	height: 30px;
+	border-radius: 5px;
+	border: 1px solid #666666;
+	color: #FFFFFF;
+}
+
+.span-red {
+	background-color: red;
+}
+
+.span-blue {
+	background-color: blue;
+}
+
+.span-green {
+	background-color: green;
+}

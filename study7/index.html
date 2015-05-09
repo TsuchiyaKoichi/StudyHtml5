@@ -1,0 +1,102 @@
+<!-- <!DOCTYPE html> -->
+<html ng-app="app" ng-strict-di>
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width">
+    <script src="knockout-3.3.0.js" defer></script>
+    <script src="study7.js" defer></script>
+    <link rel="stylesheet" href="../lib/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+
+    <h3>Knockout.js 日本語ドキュメント</h3>
+
+    <section id="section1">
+        <div>
+            オブジェクトをバインド:<span data-bind="text: name"></span>
+        </div>
+    </section>
+
+    <section id="section2">
+        <div>
+            オブジェクトをバインド:<span data-bind="text: name"></span>
+        </div>
+    </section>
+
+    <section id="section3">
+        <input type="text" id="myName">
+        <input type="button" id="btnSetName" value="名前を変更する">
+        <div>
+            名前:<span data-bind="text: name"></span>
+        </div>
+    </section>
+
+    <section id="section4">
+        <h4>配列をバインド</h4>
+        <ul data-bind="foreach: persons">
+            <li data-bind="text: name + '  ' + age"></li>
+        </ul>
+    </section>
+
+    <section id="section5">
+        <h4>ComputedObservable</h4>
+        <div>
+            <div>
+                FirstName:
+                <input type="text" id="firstName">
+                <input type="button" id="btnFirstName" value="変更">
+            </div>
+            <div>
+                LastName:
+                <input type="text" id="lastName">
+                <input type="button" id="btnLastName" value="変更">
+            </div>
+        </div>
+        <div>ファーストネーム<span data-bind="text: firstName"></span></div>
+        <div>ラストネーム：<span data-bind="text: lastName"></span></div>
+        <div>フルネーム：<span data-bind="text: fullName"></span></div>
+        <div>文字数：<span data-bind="text: nameLength"></span></div>
+        <br>
+        <div>フルネーム2：<span data-bind="text: fullName2"></span></div>
+        <div>フルネーム3：<span data-bind="text: fullName3"></span></div>
+        <div>フルネーム4：<span data-bind="text: fullName4()"></span></div>
+    </section>
+
+    <section id="section6">
+        <h4>テキスト及び表現</h4>
+        <div class="subtitle">・visible</div>
+        <input type="checkbox" id="enableDisplay" data-bind="checked: enableDisp"><label for="enableDisplay">表示する</label>
+        <span data-bind="visible: enableDisp">チェックされています</span>
+        <span data-bind="visible: !enableDisp()">チェックは外れています</span>
+
+        <div class="subtitle">・text</div>
+        <div data-bind="text: sampleText"></div>
+        <div data-bind="text: sampleText2()"></div>
+        <div data-bind="text: 'インラインでも処理できる' + (enableDisp() ? 'ON': 'OFF')"></div>
+        <div>コンテナレスで表示する:<!-- ko text: sampleText --><!-- /ko --></div>
+
+        <div class="subtitle">・html</div>
+        <div data-bind="html: sampleHtml"></div>
+
+        <div class="subtitle">・css</div>
+        売上：<input type="text" data-bind="textInput: sale">
+        <input type="checkbox" id="boldSetting" data-bind="checked: enableBold"><label for="boldSetting">太字にする</label>
+        <br>
+        <div data-bind="css: { minus: sale() < 0, futoji: enableBold() }">売上は<!-- ko text: sale --><!-- /ko -->です</div>
+        <br>
+        <input type="button" value="red" class="btn btn-danger" data-bind="click: onRed()">
+        <input type="button" value="blue" class="btn btn-primary" data-bind="click: onBlue()">
+        <input type="button" value="green" class="btn btn-success" data-bind="click: onGreen()">
+        <div class="cssTest" data-bind="css: myColor">背景色が変わる</div>
+
+        <div class="subtitle">・style</div>
+        <div data-bind="style: { color: sale() < 0 ? 'red' : 'black', 'font-weight': enableBold() ? 'bold' : 'normal' }">売上は<!-- ko text: sale --><!-- /ko -->です</div>
+
+        <div class="subtitle">・attr</div>
+        <a data-bind="attr: { href: dispSale }">売上は？</a>
+    </section>
+  </body>
+</html>

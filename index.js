@@ -38,7 +38,10 @@ angular.module('app', [])
       url: 'http://angularjsninja.com/blog/2013/12/13/angularjs-watch/',
       sample: './study6'
     });
-    
-    // 次のネタ
-    // AngularJS のデータバインドを支える $watch http://angularjsninja.com/blog/2013/12/13/angularjs-watch/
+
+    scope.sites.push({
+      name: 'Knockout.js 日本語ドキュメント',
+      url: 'http://kojs.sukobuto.com/',
+      sample: './study7'
+    });
   }]);
