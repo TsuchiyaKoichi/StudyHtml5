@@ -1,20 +1,71 @@
 @fontBasicColor: #5bb75b;
 
-.test-less {
+body {
+  margin: 0;
+  font-family: "ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro",Meiryo,"メイリオ","ＭＳ Ｐゴシック",Helvetica,Sans-Serif;
+}
+
+.header {
+  
+  background-color: #5bb75b;
+  padding: 10px;
+  text-align: center;
   
   h1 {
+    display: inline;
+    margin: 0;
+    color: #FFFFFF;
     font-size: 28px;
-    color: @fontBasicColor;
+    line-height: 1;
+    vertical-align: middle;
   }
   
-  h2 {
-    font-size: 20px;
-    color: @fontBasicColor;
+  .added {
+    
+    float: right;
     
     a {
-      font-size: 12px;
-      text-decoration: underline;
-      color: #BBBBBB;
+      text-decoration: none;
+      color: #FFFFFF;
+      vertical-align: middle;
+      border: 1px solid #FFFFFF;
+      border-radius: 5px;
+      padding: 2px 5px 2px 5px;
     }
+  }
+}
+
+.test-less {
+  
+  padding: 20px;
+  
+  .content {
+    
+    padding: 0;
+    margin: 30px 0 0 0;
+    
+    .title {
+      
+      margin: 0;
+      padding: 0;
+      
+      h2 {
+        margin: 0;
+        font-size: 20px;
+        color: @fontBasicColor;
+        line-height: 1;
+      }
+      
+      a {
+        margin: 0;
+        font-size: 14px;
+        text-decoration: underline;
+        color: #BBBBBB;
+      }
+    }
+  }
+  
+  .content:first-child {
+    margin : 0;
   }
 }

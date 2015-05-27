@@ -3,8 +3,8 @@
 
   <head>
     <meta charset="utf-8" />
-    <link rel="stylesheet/less" type="text/css" href="index.less" />
     <link rel="stylesheet" href="lib/bootstrap.min.css" />
+    <link rel="stylesheet/less" type="text/css" href="index.less" />
     <script src="lib/jquery.min.js"></script>
     <script src="lib/bootstrap.min.js"></script>
     <script src="lib/less.min.js"></script>
@@ -13,23 +13,27 @@
   </head>
 
   <body>
-    <div class="test-less" ng-controller="menuController">
+    <section class='header'>
       <h1>フロントエンド学習</h1>
+    </section>
+    
+    <section class="test-less" ng-controller="menuController">
       
-      <div ng-repeat="site in sites">
-        <h2>
-          {{($index + 1) + '.' + site.name}}
-          <br />
+      
+      <div class='content' ng-repeat="site in sites">
+        
+        <div class='title'>
+          <h2>{{($index + 1) + '.' + site.name}}</h2>
           <a href="{{site.url}}" target="_blank">{{site.url}}</a>
-          <br />
-        </h2>
+        </div>
+        
         <ul>
           <li>
             <a href="{{site.sample}}">サンプル</a>
           </li>
         </ul>
       </div>
-    </div>
+    </section>
   </body>
 
 </html>
