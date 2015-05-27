@@ -47,3 +47,19 @@ angular.module('app')
     scope.msg = text;
     scope.trustMsg = sce.trustAsHtml(text);
   }]);
+  
+angular.module('app')
+  .controller('ctrlNgHref', ['$scope', '$timeout', function($scope, $timeout) {
+
+    // ng-hrefの動作確認のため5秒の待機の後にurlをセットしている
+    $scope.url ='';
+    $timeout(function() {
+      $scope.url = 'http://www.buildinsider.net/web/angularjstips/0009';
+    }, 5000);
+  }]);
+  
+angular.module('app')
+  .controller('ctrlNgIf', ['$scope', function($scope) {
+
+    $scope.show = true;
+  }]);

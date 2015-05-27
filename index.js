@@ -44,4 +44,16 @@ angular.module('app', [])
       url: 'http://kojs.sukobuto.com/',
       sample: './study7'
     });
+    
+    scope.sites.push({
+      name: 'DOM操作の最適化によるJavaScriptチューニング',
+      url: 'https://html5experts.jp/yoshikawa_t/1888/',
+      sample: './study8'
+    });
+    
+    scope.sites.push({
+      name: 'JavaScript初級者から中級者になろう',
+      url: 'http://uhyohyo.net/javascript/',
+      sample: './study9'
+    });
   }]);

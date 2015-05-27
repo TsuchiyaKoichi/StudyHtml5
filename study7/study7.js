@@ -129,7 +129,7 @@
 
 		self.myColor = ko.observable();
 		self.onRed = function() {
-			self.myColor("span-red");
+			self.myColor("span-red futoji");
 		};
 		self.onBlue = function() {
 			self.myColor("span-blue");
@@ -137,6 +137,8 @@
 		self.onGreen = function() {
 			self.myColor("span-green");
 		};
+		
+		self.myBold = ko.observable("futoji");
 
 		self.dispSale = ko.computed(function(){
 			return "javascript:alert('" + self.sale() + "')"

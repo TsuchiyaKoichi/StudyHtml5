@@ -5,12 +5,38 @@
     <div>
         <h5>・querySelector</h5>
         <div class="btn-group">
-            <button class="btn btn-default" ng-click="test(selector1)">{{selector1}}</button>
-            <button class="btn btn-default">test</button>
+            <button class="btn btn-default" ng-repeat="selector in selectors" ng-click="highlight(selector)">{{selector}}</button>
         </div>
     </div>
 </div>
-<div class="view-area">
+<div id="view1" class="view-area">
+    <div class="div1">
+        DIV<br>
+        <span>SPAN1</span>
+        <span>SPAN2</span>
+        <span>SPAN3</span>
+        <span>SPAN4</span>
+        <br>
+        <ul>
+            <li>リスト1</li>
+            <li>リスト2</li>
+            <li>リスト3</li>
+            <li>リスト4</li>
+        </ul>
+    </div>
+</div>
+</section>
+<hr>
+<section>
+<div class="operation-area">
+    <div>
+        <h5>・querySelectorAll</h5>
+        <div class="btn-group">
+            <button class="btn btn-default" ng-repeat="selector in selectorsAll" ng-click="highlightAll(selector)">{{selector}}</button>
+        </div>
+    </div>
+</div>
+<div id="view2" class="view-area">
     <div class="div1">
         DIV<br>
         <span>SPAN1</span>

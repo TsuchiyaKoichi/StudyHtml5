@@ -14,6 +14,10 @@ angular.module('app')
             .when('/section2', {
                 templateUrl: 'section2.html'
             })
+            .when('/section3', {
+                templateUrl: 'section3.html',
+                controller: 'Section3Controller'
+            })
             .when('/section4', {
                 templateUrl: 'section4.html',
                 controller: 'Section4Controller'
@@ -33,6 +37,10 @@ angular.module('app')
         scope.sections.push({
            title: 'ブラウザでストレージ？ Web Storageを使いこなそう',
            url: '#/section2'
+        });
+        scope.sections.push({
+           title: 'アドインなしで実現可能！ ドラッグ＆ドロップを使いこなそう',
+           url: '#/section3'
         });
         scope.sections.push({
            title: 'DOM操作の主流になるか！？ セレクタAPIを使いこなそう',
@@ -222,12 +230,102 @@ angular.module('app')
            scope.$apply();
         });
     }])
+    .controller('Section3Controller', ['$scope', function(scope) {
+        
+        $(document).on('dragstart', '.item', function(e) {
+            event.dataTransfer.setData('text', event.target.id);
+        });
+        
+        $(document).on('dragover', '.container', function(e) {
+            event.preventDefault();
+        });
+        
+        $(document).on('drop', '.container', function(e) {
+            var id = event.dataTransfer.getData('text');
+            var element = document.getElementById(id);
+            event.target.appendChild(element);
+            event.preventDefault();
+        });
+        
+        // var container1 = document.getElementById('container1');
+        // container1.addEventListener('dragover', function(event) {
+        //     event.preventDefault();
+        // });
+        // container1.addEventListener('drop', function(event) {
+        //     var id = event.dataTransfer.getData('text');
+        //     var element = document.getElementById(id);
+        //     event.currentTarget.appendChild(element);
+        //     event.preventDefault();
+        // });
+        
+        // var container2 = document.getElementById('container2');
+        // container2.addEventListener('dragover', function(event) {
+        //     event.preventDefault();
+        // });
+        // container2.addEventListener('drop', function(event) {
+        //     var id = event.dataTransfer.getData('text');
+        //     var element = document.getElementById(id);
+        //     event.currentTarget.appendChild(element);
+        //     event.preventDefault();
+        // });
+    }])
     .controller('Section4Controller', ['$scope', function(scope) {
         
-        scope.selector1 = 'div1';
+        // span:nth-child(4)で3番目のspanが選択される理由
+        // nth-childは親要素からの数を指定するものでspanを数える訳ではない。
+        // なのでこのサンプルの場合は<br>がnth-child(0)となり最初のspanがnth-child(1)である。
+        scope.selectors = [];
+        scope.selectors.push('.div1');
+        scope.selectors.push('span');
+        scope.selectors.push('li:nth-child(3)');
+        scope.selectors.push('span:nth-child(1)');
+        scope.selectors.push('span:nth-child(4)');
         
-        scope.test = function(val) {
-            console.log("." + val);
-            document.querySelector(val).classList.add(val);
+        scope.selectorsAll = [];
+        scope.selectorsAll.push('.div1');
+        scope.selectorsAll.push('span');
+        scope.selectorsAll.push('li:nth-child(2n+1)');
+        scope.selectorsAll.push('li:nth-child(2n)');
+        scope.selectorsAll.push('li:nth-child(-n+2)');
+        scope.selectorsAll.push('span:nth-child(-n+2)');
+        
+        scope.highlight = function(val) {
+            
+            // 一旦全てのhighlightクラスを除去する
+            var target = document.getElementById('view1');
+            target = removeAllHighlight(target);
+            
+            // 対象へhighlightクラスをセットする
+            target.querySelector(val).classList.add('highlight');
         };
+        
+        scope.highlightAll = function(val) {
+            
+            // 一旦全てのhighlightクラスを除去する
+            var target = document.getElementById('view2');
+            target = removeAllHighlight(target);
+            
+            // 対象へhighlightクラスをセットする
+            var elements = target.querySelectorAll(val);
+            for(var i = 0; i < elements.length; i++) {
+                elements[i].classList.add('highlight');
+            }
+        };
+        
+        function removeAllHighlight(origin) {
+            
+            // ノードリストをディープコピー
+            var clone = origin.cloneNode(true);
+            
+            // highlightクラスを持つエレメントを取得し除去する
+            var elements = clone.querySelectorAll('.highlight');
+            for(var i = 0; i < elements.length; i++) {
+                elements[i].classList.remove('highlight');
+            }
+            
+            // 元のノードに変更したノードをセットする
+            origin.parentNode.replaceChild(clone, origin);
+            
+            return clone;
+        }
     }]);

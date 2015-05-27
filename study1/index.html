@@ -4,54 +4,91 @@
 
   <head>
     <meta charset="utf-8" />
-    <!--<link rel="stylesheet" href="study1.css" />-->
+    <link rel="stylesheet" href="study1.css" />
   </head>
 
   <body>
-
-    <h3>エクスプレッション</h3>
-    <div ng-controller="myController1">
-      Controller1:{{msg}}
-    </div>
-    
-    <div ng-controller="myController2">
-      Controller2:{{msg}}
-    </div>
-    
-    <br />
-    
-    <h3>データバインド</h3>
-    
-    <div ng-controller="myController3">
-      <input type="text" ng-model="name" />
-      <div>こんにちは{{name}}さん</div>
-      <!-- この記述方法ならページロード時に一瞬{{}}式が見えるのを防止できる -->
-      <div ng-bind="'こんにちは' + name + 'さん'"></div>
-      <!-- この記述方法でも可。ただしこちらの場合はangular.jsを先頭でロードしておく必要がある -->
-      <div ng-cloak>{{"こんにちは" + name + "さん"}}</div>
-      <br />
-      <button ng-click="onclick()">ボタン</button>
-      <span ng-bind="ret"></span><br />
+    <div class='main'>
+      <section class='section'>
+        <h3>エクスプレッション</h3>
+        <div ng-controller="myController1">
+          Controller1:{{msg}}
+        </div>
+        
+        <div ng-controller="myController2">
+          Controller2:{{msg}}
+        </div>
+        
+        <br />
+        
+        <h3>データバインド</h3>
+        
+        <div ng-controller="myController3">
+          <input type="text" ng-model="name" />
+          <div>こんにちは{{name}}さん</div>
+          <!-- この記述方法ならページロード時に一瞬{{}}式が見えるのを防止できる -->
+          <div ng-bind="'こんにちは' + name + 'さん'"></div>
+          <!-- この記述方法でも可。ただしこちらの場合はangular.jsを先頭でロードしておく必要がある -->
+          <div ng-cloak>{{"こんにちは" + name + "さん"}}</div>
+          <br />
+          <button ng-click="onclick()">ボタン</button>
+          <span ng-bind="ret"></span><br />
+          
+          <!-- $eventでイベント内容を渡すことができる -->
+          <button ng-click="onclick($event)">ボタン</button>
+          <span ng-bind="ret"></span>
+        </div>
+        
+        <br />
+        
+        <h3>HTMLバインド</h3>
+        
+        <div ng-controller="myController4">
+          <div style="color:blue;">[ng-bindでバインド]</div>
+          <div ng-bind="msg"></div><br/>
+          <div style="color:blue;">[sce.trustAsHtmlでバインド]</div>
+          <div ng-bind-html="trustMsg"></div><br/>
+        </div>
+        
+        <div ng-controller="myController5">
+          <div style="color:blue;">[ng-bind-htmlとngSanitizeでバインド]</div>
+          <div ng-bind-html="msg"></div>
+        </div>
+      </section>
       
-      <!-- $eventでイベント内容を渡すことができる -->
-      <button ng-click="onclick($event)">ボタン</button>
-      <span ng-bind="ret"></span>
-    </div>
-    
-    <br />
-    
-    <h3>HTMLバインド</h3>
-    
-    <div ng-controller="myController4">
-      <div style="color:blue;">[ng-bindでバインド]</div>
-      <div ng-bind="msg"></div><br/>
-      <div style="color:blue;">[sce.trustAsHtmlでバインド]</div>
-      <div ng-bind-html="trustMsg"></div><br/>
-    </div>
-    
-    <div ng-controller="myController5">
-      <div style="color:blue;">[ng-bind-htmlとngSanitizeでバインド]</div>
-      <div ng-bind-html="msg"></div>
+      <section class='section' ng-controller='ctrlNgHref'>
+        <div class='subtitle'>
+          <h3>ハイパーリンクを動的に生成するには？(ng-href)</h3>
+          <p>
+            リンクを動的に作成したい場合、href属性に$scope.urlをバインドすれば一見うまくいく。
+            しかし、$scope.urlの生成前にユーザがクリックしてしまうと意図しないページにとんでしまう。
+            ng-hrefを利用すれば生成前はリンクを無効にしておくことができる。
+          </p>
+        </div>
+        <div class='content'>
+          普通にバインドした場合：<a href='{{url}}' target='_blank'>リンク</a><br>
+          ng-hrefを利用した場合：<a ng-href='{{url}}' target='_blank'>リンク</a>
+        </div>
+      </section>
+      
+      <section class='section' ng-controller='ctrlNgIf'>
+        <div class='subtitle'>
+          <h3>条件式の真偽に応じて表示を切り替えるには？(ng-if)</h3>
+          <p>
+            true/falseの値をバインドし、指定している要素の表示/非表示を切り替える。
+            非表示の際はDOMツリーから完全に消去される。
+          </p>
+        </div>
+        <div class='content'>
+          <input id='showCtrl' type='checkbox' ng-model='show'>
+          <label for='showCtrl'>表示切替</label>
+          <br>
+          <div ng-if='show' style='width: 200px; border: 1px solid #000000;'>
+            表示切替コンテンツ<br>
+            あいうえおかきくけこさしすせそあいうえおかきくけこさしすせそ
+          </div>
+        </div>
+      </section>
     </div>
 
     <!-- ライブラリダウンロードによって、ページの描画がブロックされるのを防ぐため末尾に宣言する -->    

@@ -116,6 +116,7 @@ body {
 {
     width: 300px;
     height: 300px;
+    margin-top: 10px;
 }
 
 .view-area span, .view-area div
@@ -126,4 +127,20 @@ body {
 .view-area .highlight
 {
     background-color: #FF1493;
+}
+
+.item {
+	margin: 25px 0 25px 25px;
+	width: 100px;
+	height: 100px;
+	float: left;
+}
+
+.container {
+    padding: 0;
+    margin: 10px;
+	width: 525px;
+	height: 150px;
+	border: 5px solid #000000;
+	box-sizing: content-box;
 }

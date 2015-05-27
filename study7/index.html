@@ -85,7 +85,7 @@
         売上：<input type="text" data-bind="textInput: sale">
         <input type="checkbox" id="boldSetting" data-bind="checked: enableBold"><label for="boldSetting">太字にする</label>
         <br>
-        <div data-bind="css: { minus: sale() < 0, futoji: enableBold() }">売上は<!-- ko text: sale --><!-- /ko -->です</div>
+        <div data-bind="css: { minus: sale() < 0, futoji: enableBold }">売上は<!-- ko text: sale --><!-- /ko -->です</div>
         <br>
         <input type="button" value="red" class="btn btn-danger" data-bind="click: onRed()">
         <input type="button" value="blue" class="btn btn-primary" data-bind="click: onBlue()">
