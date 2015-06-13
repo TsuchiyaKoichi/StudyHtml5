@@ -56,4 +56,10 @@ angular.module('app', [])
       url: 'http://uhyohyo.net/javascript/',
       sample: './study9'
     });
+
+    scope.sites.push({
+      name: 'HIGHCHARTS',
+      url: 'http://www.highcharts.com/',
+      sample: './study10'
+    });
   }]);
