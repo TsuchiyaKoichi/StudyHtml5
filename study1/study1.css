@@ -10,23 +10,23 @@ body {
     margin: 20px 20px 200px 20px;
 }
 
-.section {
+section {
     margin: 20px auto 0 auto;
     background-color: #fffacd;
     max-width: 700px;
-    box-shadow: 3px 3px 3px 0px rgba(0, 0, 0, 0.4);
+    box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.4);
 }
 
 .subtitle {
     margin: 0;
     padding: 5px;
-    background-color: #c1ffc1;
+    background-color: #f5deb3;
 }
 
-.subtitle h3 {
+.subtitle h1 {
     margin: 0;
     font-size: 20px;
-    line-height: 1;
+    line-height: 1.2;
 }
 
 .subtitle p {
@@ -36,6 +36,5 @@ body {
 }
 
 .content {
-    margin: 10px 0 0 0;
-    padding: 5px;
+    padding: 10px;
 }

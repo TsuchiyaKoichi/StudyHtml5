@@ -63,3 +63,9 @@ angular.module('app')
 
     $scope.show = true;
   }]);
+  
+angular.module('app')
+  .controller('ctrlNgshow', ['$scope', function($scope) {
+    
+    $scope.show = true;
+  }]);

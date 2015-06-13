@@ -12,56 +12,58 @@
   <body>
     <ng-include src="'../header.html'"></ng-include>
     <div class='main'>
-      <section class='section'>
-        <h3>エクスプレッション</h3>
-        <div ng-controller="myController1">
-          Controller1:{{msg}}
-        </div>
-        
-        <div ng-controller="myController2">
-          Controller2:{{msg}}
-        </div>
-        
-        <br />
-        
-        <h3>データバインド</h3>
-        
-        <div ng-controller="myController3">
-          <input type="text" ng-model="name" />
-          <div>こんにちは{{name}}さん</div>
-          <!-- この記述方法ならページロード時に一瞬{{}}式が見えるのを防止できる -->
-          <div ng-bind="'こんにちは' + name + 'さん'"></div>
-          <!-- この記述方法でも可。ただしこちらの場合はangular.jsを先頭でロードしておく必要がある -->
-          <div ng-cloak>{{"こんにちは" + name + "さん"}}</div>
-          <br />
-          <button ng-click="onclick()">ボタン</button>
-          <span ng-bind="ret"></span><br />
+      <section>
+        <div class='content'>
+          <h1>エクスプレッション</h1>
+          <div ng-controller="myController1">
+            Controller1:{{msg}}
+          </div>
           
-          <!-- $eventでイベント内容を渡すことができる -->
-          <button ng-click="onclick($event)">ボタン</button>
-          <span ng-bind="ret"></span>
-        </div>
-        
-        <br />
-        
-        <h3>HTMLバインド</h3>
-        
-        <div ng-controller="myController4">
-          <div style="color:blue;">[ng-bindでバインド]</div>
-          <div ng-bind="msg"></div><br/>
-          <div style="color:blue;">[sce.trustAsHtmlでバインド]</div>
-          <div ng-bind-html="trustMsg"></div><br/>
-        </div>
-        
-        <div ng-controller="myController5">
-          <div style="color:blue;">[ng-bind-htmlとngSanitizeでバインド]</div>
-          <div ng-bind-html="msg"></div>
+          <div ng-controller="myController2">
+            Controller2:{{msg}}
+          </div>
+          
+          <br />
+          
+          <h1>データバインド</h1>
+          
+          <div ng-controller="myController3">
+            <input type="text" ng-model="name" />
+            <div>こんにちは{{name}}さん</div>
+            <!-- この記述方法ならページロード時に一瞬{{}}式が見えるのを防止できる -->
+            <div ng-bind="'こんにちは' + name + 'さん'"></div>
+            <!-- この記述方法でも可。ただしこちらの場合はangular.jsを先頭でロードしておく必要がある -->
+            <div ng-cloak>{{"こんにちは" + name + "さん"}}</div>
+            <br />
+            <button ng-click="onclick()">ボタン</button>
+            <span ng-bind="ret"></span><br />
+            
+            <!-- $eventでイベント内容を渡すことができる -->
+            <button ng-click="onclick($event)">ボタン</button>
+            <span ng-bind="ret"></span>
+          </div>
+          
+          <br />
+          
+          <h1>HTMLバインド</h1>
+          
+          <div ng-controller="myController4">
+            <div style="color:blue;">[ng-bindでバインド]</div>
+            <div ng-bind="msg"></div><br/>
+            <div style="color:blue;">[sce.trustAsHtmlでバインド]</div>
+            <div ng-bind-html="trustMsg"></div><br/>
+          </div>
+          
+          <div ng-controller="myController5">
+            <div style="color:blue;">[ng-bind-htmlとngSanitizeでバインド]</div>
+            <div ng-bind-html="msg"></div>
+          </div>
         </div>
       </section>
       
-      <section class='section' ng-controller='ctrlNgHref'>
+      <section ng-controller='ctrlNgHref'>
         <div class='subtitle'>
-          <h3>ハイパーリンクを動的に生成するには？(ng-href)</h3>
+          <h1>ハイパーリンクを動的に生成するには？(ng-href)</h1>
           <p>
             リンクを動的に作成したい場合、href属性に$scope.urlをバインドすれば一見うまくいく。
             しかし、$scope.urlの生成前にユーザがクリックしてしまうと意図しないページにとんでしまう。
@@ -74,9 +76,9 @@
         </div>
       </section>
       
-      <section class='section' ng-controller='ctrlNgIf'>
+      <section ng-controller='ctrlNgIf'>
         <div class='subtitle'>
-          <h3>条件式の真偽に応じて表示を切り替えるには？(ng-if)</h3>
+          <h1>条件式の真偽に応じて表示を切り替えるには？(ng-if)</h1>
           <p>
             true/falseの値をバインドし、指定している要素の表示/非表示を切り替える。
             非表示の際はDOMツリーから完全に消去される。
@@ -85,6 +87,26 @@
         <div class='content'>
           <input id='showCtrl' type='checkbox' ng-model='show'>
           <label for='showCtrl'>表示切替</label>
+          <br>
+          <div ng-if='show' style='width: 200px; border: 1px solid #000000;'>
+            表示切替コンテンツ<br>
+            あいうえおかきくけこさしすせそあいうえおかきくけこさしすせそ
+          </div>
+        </div>
+      </section>
+      
+      <section ng-controller='ctrlNgIf'>
+        <div class='subtitle'>
+          <h1>要素の表示／非表示を切り替えるには？(ng-show/ng-hide/ng-open)</h1>
+          <p>
+            
+          </p>
+        </div>
+        <div class='content'>
+          
+          <input id='showCtrl' type='checkbox' ng-model='show'>
+          <label for='showCtrl'>表示切替</label>
+          
           <br>
           <div ng-if='show' style='width: 200px; border: 1px solid #000000;'>
             表示切替コンテンツ<br>
