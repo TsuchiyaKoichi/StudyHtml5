@@ -3,10 +3,18 @@
 
 body {
 	margin: 0;
+	background: url('sample.png') repeat;
+	font-family: "ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro",Meiryo,"メイリオ","ＭＳ Ｐゴシック",Helvetica,Sans-Serif;
+}
+
+.main {
+	max-width: 700px;
+	width: 100%;
+	margin: 0 auto;
 }
 
 header {
-	margin: 0;
+	margin: 0 0 20px 0;
 	padding: 10px;
 }
 
@@ -57,4 +65,23 @@ header {
 	margin: 0;
 	text-shadow: none;
 	font-weight: normal;
+}
+
+.description {
+	display: inline-block;
+	color: transparent;
+	margin: 8px 0 0 0;
+	font-size: 20px;
+	font-family: "ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro",Meiryo,"メイリオ","ＭＳ Ｐゴシック",Helvetica,Sans-Serif;
+}
+
+.title a:hover .description {
+	transition: 2s;
+	color: #424242;
+}
+
+.main > article {
+	background-color: rgba(255, 255, 255, 0.7);
+	border-radius: 5px;
+	padding: 20px;
 }
